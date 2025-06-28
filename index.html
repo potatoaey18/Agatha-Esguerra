@@ -175,14 +175,6 @@
             border-radius: 2px;
         }
 
-        h3 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            text-align: center;
-            position: relative;
-        }
-
         .about-content {
             max-width: 800px;
             margin: 0 auto;
@@ -334,6 +326,10 @@
             margin-bottom: 16px;
         }
 
+        .contact-links {
+            margin-bottom: 32px;
+        }
+
         .contact-links a {
             display: inline-block;
             margin: 8px 12px;
@@ -355,10 +351,126 @@
             background-color: #333333;
         }
 
+        .contact-form {
+            background-color: var(--secondary-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            margin-top: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form:hover {
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            text-align: left;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        [data-theme="dark"] .contact-form input,
+        [data-theme="dark"] .contact-form textarea {
+            border-color: #333333;
+            background-color: #1a1a1a;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--hover-accent);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+            max-height: 300px;
+        }
+
+        .contact-form button {
+            display: block;
+            width: 100%;
+            background-color: var(--hover-accent);
+            color: #ffffff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] .contact-form button {
+            background-color: var(--hover-accent);
+        }
+
+        [data-theme="dark"] .contact-form button:hover {
+            background-color: #93c5fd;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.15);
+        }
+
+        .form-message {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.95rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .form-message.success {
+            background-color: #e6fffa;
+            color: #2c7a7b;
+        }
+
+        [data-theme="dark"] .form-message.success {
+            background-color: #2c7a7b;
+            color: #e6fffa;
+        }
+
+        .form-message.error {
+            background-color: #fff1f2;
+            color: #e53e3e;
+        }
+
+        [data-theme="dark"] .form-message.error {
+            background-color: #e53e3e;
+            color: #fff1f2;
+        }
+
         footer {
             background-color: var(--secondary-bg);
             padding: 20px 0;
-            introduction: center;
+            text-align: center;
             font-size: 0.9rem;
             color: var(--accent-color);
             border-top: 1px solid #e5e7eb;
@@ -521,18 +633,40 @@
                 font-size: 2rem;
             }
 
-            h3 {
-                font-size: 1.5rem;
-            }
-
             .about-content {
                 padding: 24px;
+            }
+
+            .contact-links {
+                margin-bottom: 24px;
             }
 
             .contact-links a {
                 margin: 6px 8px;
                 padding: 6px 12px;
                 font-size: 0.9rem;
+            }
+
+            .contact-form {
+                padding: 24px;
+                max-width: 100%;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                padding: 10px 14px;
+                font-size: 0.9rem;
+                margin-bottom: 16px;
+            }
+
+            .contact-form button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .form-message {
+                font-size: 0.9rem;
+                padding: 10px;
             }
 
             footer {
@@ -591,16 +725,27 @@
                 font-size: 1.75rem;
             }
 
-            h3 {
-                font-size: 1.3rem;
-            }
-
             .project-card h4 {
                 font-size: 1.3rem;
             }
 
             .contact-content {
                 padding: 0 16px;
+            }
+
+            .contact-form {
+                padding: 20px;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+
+            .form-message {
+                font-size: 0.85rem;
+                padding: 8px;
             }
         }
     </style>
@@ -637,7 +782,7 @@
             <div class="container">
                 <h2>About Me</h2>
                 <div class="about-content">
-                    <p>Dynamic IT Specialist based in the City of Meycauayan, Bulacan, with a passion for creating efficient, data-driven solutions. I specialize in JavaScript, MySQL, Python, PHP, and Vue.js, with a focus on optimizing systems and automating processes. My experience includes leading projects like OjtPortal and Isko-Kit, delivering innovative, user-focused solutions. I'm eager to leverage my technical expertise to contribute to impactful projects.</p>
+                    <p>Dynamic IT Specialist based in the City of Meycauayan, Bulacan, with a passion for creating efficient, data-driven solutions. I specialize in JavaScript, MySQL, Python, PHP, and Vue.js, with a focus on optimizing systems and automating processes. My experience includes leading projects like OJTPortal and Isko-Kit, delivering innovative, user-focused solutions. I'm eager to leverage my technical expertise to contribute to impactful projects.</p>
                 </div>
             </div>
         </section>
@@ -669,7 +814,7 @@
                 <h2>Projects</h2>
                 <div class="projects-grid">
                     <div class="project-card">
-                        <h4>OjtPortal</h4>
+                        <h4>OJTPortal</h4>
                         <ul>
                             <li>Tech: JavaScript, MySQL, Vue.js</li>
                             <li>Led development of a web-based portal for document processing and monitoring for 4 user types</li>
@@ -706,7 +851,7 @@
                         <h4>Attendance Management System</h4>
                         <ul>
                             <li>Tech: Python, Tkinter, MySQL</li>
-                            <li>Designed a desktop app with Tkinter GUI for 50+ employees</li>
+                            <li>Designed a desktop app with Tkinter GUI for 50+ users</li>
                             <li>Integrated MySQL for reliable attendance tracking</li>
                         </ul>
                     </div>
@@ -743,12 +888,23 @@
             <div class="container">
                 <h2>Contact</h2>
                 <div class="contact-content">
-                    <p>Let's connect! Reach out via email, phone, or LinkedIn.</p>
+                    <p>Let's connect! Reach out via email, phone, LinkedIn, or the form below.</p>
                     <div class="contact-links">
-                        <a href="mailto:agathamayesguerrs@gmail.com">Email</a>
+                        <a href="mailto:agathamayesguerra@gmail.com">Email</a>
                         <a href="tel:+63315658642">Phone</a>
-                        <a href="https://linkedin.com/in/agathamayesguerrs" target="_blank">LinkedIn</a>
+                        <a href="https://linkedin.com/in/agathamayesguerra" target="_blank">LinkedIn</a>
                     </div>
+                    <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="bba86084-99cb-4c19-944c-488d82caa874">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        <button type="submit">Send Message</button>
+                        <div id="form-message" class="form-message" style="display: none;"></div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -764,6 +920,8 @@
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.sidebar nav a');
         const themeToggle = document.querySelector('.theme-toggle');
+        const form = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -799,6 +957,33 @@
         if (savedTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            formMessage.style.display = 'none';
+            formMessage.className = 'form-message';
+
+            const formData = new FormData(form);
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (response.ok) {
+                    formMessage.textContent = 'Thank you! Your message has been sent.';
+                    formMessage.className = 'form-message success';
+                    formMessage.style.display = 'block';
+                    form.reset();
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                formMessage.textContent = 'Oops! There was an error sending your message.';
+                formMessage.className = 'form-message error';
+                formMessage.style.display = 'block';
+            }
+        });
     </script>
 </body>
 </html>
