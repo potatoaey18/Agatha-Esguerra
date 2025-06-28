@@ -15,6 +15,8 @@
             --hover-accent: #1e40af;
             --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
             --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --gradient-start: #60a5fa;
+            --gradient-end: #1e40af;
         }
 
         [data-theme="dark"] {
@@ -25,6 +27,8 @@
             --hover-accent: #60a5fa;
             --card-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -2px rgba(255, 255, 255, 0.1);
             --card-hover-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.15), 0 4px 6px -4px rgba(255, 255, 255, 0.15);
+            --gradient-start: #93c5fd;
+            --gradient-end: #3b82f6;
         }
 
         * {
@@ -65,7 +69,6 @@
             padding: 0 24px;
         }
 
-        /* Sidebar Navigation */
         .sidebar {
             position: fixed;
             top: 0;
@@ -205,15 +208,18 @@
 
         .skill-card {
             background-color: var(--secondary-bg);
-            padding: 20px;
+            color: var(--text-color);
+            padding: 24px;
             border-radius: 12px;
             text-align: center;
             box-shadow: var(--card-shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .skill-card:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px);
             box-shadow: var(--card-hover-shadow);
             background-color: #eff6ff;
         }
@@ -222,13 +228,62 @@
             background-color: #333333;
         }
 
-        .projects-grid, .contributions-grid {
+        .skill-card span {
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .certification-card {
+            background-color: var(--secondary-bg);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+            background-color: #eff6ff;
+        }
+
+        [data-theme="dark"] .certification-card:hover {
+            background-color: #333333;
+        }
+
+        .certification-card::before {
+            content: '★';
+            font-size: 1.5rem;
+            color: var(--hover-accent);
+            margin-right: 12px;
+        }
+
+        .certification-card p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
         }
 
-        .project-card, .contribution-card {
+        .project-card {
             background-color: var(--secondary-bg);
             padding: 24px;
             border-radius: 12px;
@@ -236,24 +291,24 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         }
 
-        .project-card:hover, .contribution-card:hover {
+        .project-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--card-hover-shadow);
         }
 
-        .project-card h4, .contribution-card h4 {
+        .project-card h4 {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 12px;
             color: var(--text-color);
         }
 
-        .project-card ul, .contribution-card ul {
+        .project-card ul {
             list-style: none;
             margin: 12px 0;
         }
 
-        .project-card li, .contribution-card li {
+        .project-card li {
             font-size: 0.95rem;
             color: var(--accent-color);
             margin-bottom: 8px;
@@ -261,57 +316,12 @@
             padding-left: 20px;
         }
 
-        .project-card li::before, .contribution-card li::before {
+        .project-card li::before {
             content: '•';
             position: absolute;
             left: 0;
             color: var(--hover-accent);
             font-size: 1.2rem;
-        }
-
-        .experience-item {
-            background-color: var(--secondary-bg);
-            padding: 24px;
-            border-radius: 12px;
-            margin-bottom: 24px;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-        }
-
-        .experience-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--card-hover-shadow);
-        }
-
-        .experience-item h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .experience-item p {
-            color: var(--accent-color);
-            font-size: 1rem;
-            margin-bottom: 12px;
-            font-style: italic;
-        }
-
-        .experience-item ul {
-            list-style: none;
-            padding-left: 20px;
-        }
-
-        .experience-item li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .experience-item li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--hover-accent);
         }
 
         .contact-content {
@@ -348,7 +358,7 @@
         footer {
             background-color: var(--secondary-bg);
             padding: 20px 0;
-            text-align: center;
+            introduction: center;
             font-size: 0.9rem;
             color: var(--accent-color);
             border-top: 1px solid #e5e7eb;
@@ -488,26 +498,22 @@
                 padding: 0 20px;
             }
 
-            .skills-grid {
+            .skills-grid, .certifications-grid {
                 grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
                 gap: 12px;
             }
 
-            .skill-card {
+            .skill-card, .certification-card {
                 padding: 16px;
                 font-size: 0.9rem;
             }
 
-            .projects-grid, .contributions-grid {
+            .projects-grid {
                 grid-template-columns: 1fr;
                 gap: 16px;
             }
 
-            .project-card, .contribution-card {
-                padding: 20px;
-            }
-
-            .experience-item {
+            .project-card {
                 padding: 20px;
             }
 
@@ -572,11 +578,11 @@
                 padding: 16px;
             }
 
-            .skills-grid {
+            .skills-grid, .certifications-grid {
                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             }
 
-            .skill-card {
+            .skill-card, .certification-card {
                 padding: 12px;
                 font-size: 0.85rem;
             }
@@ -589,7 +595,7 @@
                 font-size: 1.3rem;
             }
 
-            .project-card h4, .contribution-card h4 {
+            .project-card h4 {
                 font-size: 1.3rem;
             }
 
@@ -602,9 +608,7 @@
 <body>
     <button class="theme-toggle" aria-label="Toggle dark mode">
         <svg id="theme-icon" viewBox="0 0 24 24" width="24" height="24">
-            <!-- Sun icon for light mode -->
             <path class="dark-icon" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-            <!-- Starry night icon for dark mode -->
             <g class="light-icon">
                 <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" />
                 <path d="M12 6h.01M12 18h.01M6 12h.01M18 12h.01M8 8h.01M16 16h.01M8 16h.01M16 8h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -617,7 +621,7 @@
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
-            <a href="#experience">Experience</a>
+            <a href="#certifications">Certifications</a>
             <a href="#contact">Contact</a>
         </nav>
     </div>
@@ -625,7 +629,7 @@
         <section id="home" class="hero">
             <div class="container">
                 <h1>Agatha May Esguerra</h1>
-                <p>Aspiring Developer | Building Efficient, User-Focused Solutions</p>
+                <p>IT Specialist | Building Efficient, Data-Driven Solutions</p>
             </div>
         </section>
 
@@ -633,7 +637,7 @@
             <div class="container">
                 <h2>About Me</h2>
                 <div class="about-content">
-                    <p>I'm a Developer based in the City of Meycauayan, Bulacan, with a passion for creating efficient and user-focused software solutions. With a Diploma in Information Technology from the Polytechnic University of the Philippines, where I was a Consistent President's Lister, I specialize in Java, JavaScript, PHP, and Vue.js. My experience includes optimizing systems, automating processes, and leading collaborative projects like the OBLAS Employee Management System. I'm eager to contribute my technical expertise and problem-solving skills to innovative teams.</p>
+                    <p>Dynamic IT Specialist based in the City of Meycauayan, Bulacan, with a passion for creating efficient, data-driven solutions. I specialize in JavaScript, MySQL, Python, PHP, and Vue.js, with a focus on optimizing systems and automating processes. My experience includes leading projects like OjtPortal and Isko-Kit, delivering innovative, user-focused solutions. I'm eager to leverage my technical expertise to contribute to impactful projects.</p>
                 </div>
             </div>
         </section>
@@ -642,21 +646,20 @@
             <div class="container">
                 <h2>Skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-card">Java</div>
-                    <div class="skill-card">JavaScript</div>
-                    <div class="skill-card">Python</div>
-                    <div class="skill-card">PHP</div>
-                    <div class="skill-card">HTML</div>
-                    <div class="skill-card">CSS</div>
-                    <div class="skill-card">Vue.js</div>
-                    <div class="skill-card">WordPress</div>
-                    <div class="skill-card">Elementor</div>
-                    <div class="skill-card">MySQL</div>
-                    <div class="skill-card">Git</div>
-                    <div class="skill-card">Insomnia</div>
-                    <div class="skill-card">Codeception</div>
-                    <div class="skill-card">Figma</div>
-                    <div class="skill-card">Photoshop</div>
+                    <div class="skill-card"><span>JavaScript</span></div>
+                    <div class="skill-card"><span>Python</span></div>
+                    <div class="skill-card"><span>PHP</span></div>
+                    <div class="skill-card"><span>Java</span></div>
+                    <div class="skill-card"><span>HTML</span></div>
+                    <div class="skill-card"><span>CSS</span></div>
+                    <div class="skill-card"><span>Vue.js</span></div>
+                    <div class="skill-card"><span>MySQL</span></div>
+                    <div class="skill-card"><span>Tkinter</span></div>
+                    <div class="skill-card"><span>Insomnia</span></div>
+                    <div class="skill-card"><span>Codeception</span></div>
+                    <div class="skill-card"><span>Data Analytics</span></div>
+                    <div class="skill-card"><span>API Testing</span></div>
+                    <div class="skill-card"><span>Database Architecture</span></div>
                 </div>
             </div>
         </section>
@@ -666,10 +669,28 @@
                 <h2>Projects</h2>
                 <div class="projects-grid">
                     <div class="project-card">
+                        <h4>OjtPortal</h4>
+                        <ul>
+                            <li>Tech: JavaScript, MySQL, Vue.js</li>
+                            <li>Led development of a web-based portal for document processing and monitoring for 4 user types</li>
+                            <li>Designed database architecture for real-time analytics on document status and user activity</li>
+                            <li>Reduced manual monitoring efforts by 40% with dynamic JavaScript updates</li>
+                        </ul>
+                    </div>
+                    <div class="project-card">
+                        <h4>Isko-Kit</h4>
+                        <ul>
+                            <li>Tech: HTML, CSS, JavaScript</li>
+                            <li>Developed a student productivity tool with a weekly schedule generator and GWA calculator</li>
+                            <li>Enabled real-time visualization of attendance and grade trends for 100+ users</li>
+                            <li>Designed responsive interface for improved user efficiency</li>
+                        </ul>
+                    </div>
+                    <div class="project-card">
                         <h4>OBLAS Employee Management System</h4>
                         <ul>
                             <li>Tech: Vue.js, PHP, MySQL, Insomnia, Codeception</li>
-                            <li>Developed a full-stack system for secure CRUD operations</li>
+                            <li>Assisted in developing a full-stack system for employee data management</li>
                             <li>Tested APIs to ensure 100% uptime during deployment</li>
                         </ul>
                     </div>
@@ -678,51 +699,42 @@
                         <ul>
                             <li>Tech: PHP, MySQL</li>
                             <li>Built a solution to streamline operations for small retailers</li>
-                            <li>Optimized database queries for efficient data retrieval</li>
+                            <li>Optimized database for efficient transaction and inventory management</li>
                         </ul>
                     </div>
                     <div class="project-card">
                         <h4>Attendance Management System</h4>
                         <ul>
                             <li>Tech: Python, Tkinter, MySQL</li>
-                            <li>Designed a desktop app with GUI for 50+ employees</li>
-                            <li>Integrated MySQL for reliable data storage</li>
+                            <li>Designed a desktop app with Tkinter GUI for 50+ employees</li>
+                            <li>Integrated MySQL for reliable attendance tracking</li>
                         </ul>
                     </div>
                     <div class="project-card">
-                        <h4>OJTPortal</h4>
+                        <h4>Encryption and Decryption Application</h4>
                         <ul>
-                            <li>Tech: PHP, MySQL</li>
-                            <li>Designed a Web Application for 1500+ students</li>
-                            <li>Used by 4 different types of Users</li>
-                            <li>Integrated MySQL for reliable data storage</li>
+                            <li>Tech: Python, Tkinter</li>
+                            <li>Built an application with password authentication for secure data encryption</li>
+                            <li>Implemented cryptographic algorithms with analytics for performance tracking</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="experience">
+        <section id="certifications">
             <div class="container">
-                <h2>Experience</h2>
-                <div class="experience-item">
-                    <h3>Software Developer Intern | Pixel8 Web Solutions and Consultancy Inc.</h3>
-                    <p>July 2024 - September 2024</p>
-                    <ul>
-                        <li>Built scripts to automate data validation, reducing manual processing time by 30%</li>
-                        <li>Optimized REST APIs using PHP, cutting response times by 15%</li>
-                        <li>Implemented automated testing with Codeception, resolving 20+ bugs pre-launch</li>
-                        <li>Collaborated on the OBLAS Employee Management System for 200+ users</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3>Information Technology Intern | Knowles Training Institute</h3>
-                    <p>February 2025 - April 2025</p>
-                    <ul>
-                        <li>Revamped SSGC website with WordPress and Elementor, boosting page load speed by 45%</li>
-                        <li>Enhanced UI with CSS and JavaScript, increasing user engagement</li>
-                        <li>Developed a Java-based game with object-oriented design</li>
-                    </ul>
+                <h2>Certifications</h2>
+                <div class="certifications-grid">
+                    <div class="certification-card">
+                        <p>Computer Systems Servicing NCII</p>
+                    </div>
+                    <div class="certification-card">
+                        <p>Visual Graphics Design NCII</p>
+                    </div>
+                    <div class="certification-card">
+                        <p>Java Programming</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -731,14 +743,11 @@
             <div class="container">
                 <h2>Contact</h2>
                 <div class="contact-content">
-                    <p>Let's connect! Reach out via email or social media.</p>
+                    <p>Let's connect! Reach out via email, phone, or LinkedIn.</p>
                     <div class="contact-links">
-                        <a href="mailto:agathamayesguerra@gmail.com">Email</a>
-                        <a href="tel:+639150586942">Phone</a>
-                        <a href="https://linkedin.com/in/agatha-may-esguerra" target="_blank">LinkedIn</a>
-                        <p>Socials</p>
-                        <a href="https://www.facebook.com/aey.emesguerra/">Facebook</a>
-                        <a href="https://www.instagram.com/potato_aey/">Instagram</a>
+                        <a href="mailto:agathamayesguerrs@gmail.com">Email</a>
+                        <a href="tel:+63315658642">Phone</a>
+                        <a href="https://linkedin.com/in/agathamayesguerrs" target="_blank">LinkedIn</a>
                     </div>
                 </div>
             </div>
@@ -752,7 +761,6 @@
     </div>
 
     <script>
-        // Intersection Observer for section animations and active nav link
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.sidebar nav a');
         const themeToggle = document.querySelector('.theme-toggle');
@@ -774,7 +782,6 @@
 
         sections.forEach(section => observer.observe(section));
 
-        // Theme toggle functionality
         const toggleTheme = () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             if (currentTheme === 'dark') {
@@ -788,7 +795,6 @@
 
         themeToggle.addEventListener('click', toggleTheme);
 
-        // Load saved theme preference
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
