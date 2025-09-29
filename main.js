@@ -1,3 +1,5 @@
+import { inject } from "@vercel/analytics"
+
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.sidebar nav a');
 const themeToggle = document.querySelector('.theme-toggle');
